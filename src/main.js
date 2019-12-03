@@ -132,4 +132,4 @@ render(siteTripControlsElement, createFilterTemplate(), `beforeend`);
 render(siteTripEventsElement, createSortTemplate(), `beforeend`);
 for (let i = 0; i < 3; i++) {
   render(siteTripEventsElement, createContentTemplate(), `beforeend`);
-};
+}
