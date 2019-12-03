@@ -118,16 +118,16 @@ const createContentTemplate = () => {
   );
 };
 
-const render = (container, template) => {
-  container.insertAjacentHTML(template);
+const render = (container, template, place) => {
+  container.insertAjacentHTML(place, template);
 };
 
 const siteTripInfoElement = document.querySelector(`.trip-info`);
 const siteTripControlsElement = document.querySelector(`.trip-controls`);
 const siteTripEventsElement = document.querySelector(`.trip-events`);
 
-render(siteTripInfoElement, createRouteTemplate());
-render(siteTripControlsElement, createMenuTemplate());
-render(siteTripControlsElement, createFilterTemplate());
-render(siteTripEventsElement, createSortTemplate());
-render(siteTripEventsElement, createContentTemplate());
+render(siteTripInfoElement, createRouteTemplate(), 'beforeend');
+render(siteTripControlsElement, createMenuTemplate(), 'beforeend');
+render(siteTripControlsElement, createFilterTemplate(), 'beforeend');
+render(siteTripEventsElement, createSortTemplate(), 'beforeend');
+render(siteTripEventsElement, createContentTemplate(), 'beforeend');
