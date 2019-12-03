@@ -70,27 +70,6 @@ const createSortTemplate = () => {
   );
 };
 
-const createContentTemplate = () => {
-  return (
-    `<ul class="trip-days">
-      </ul>`
-  );
-};
-
-const createDayListTemplate = () => {
-  return (
-    `<li class="trip-days__item  day">
-    <div class="day__info">
-      <span class="day__counter">1</span>
-      <time class="day__date" datetime="2019-03-18">MAR 18</time>
-    </div>
-
-    <ul class="trip-events__list">
-      </ul>
-      </li>`
-  );
-};
-
 const createCardTemplate = () => {
   return (
     `<li class="trip-events__item">
@@ -144,10 +123,6 @@ render(siteTripInfoElement, createRouteTemplate(), `beforeend`);
 render(siteTripControlsElement, createMenuTemplate(), `beforeend`);
 render(siteTripControlsElement, createFilterTemplate(), `beforeend`);
 render(siteTripEventsElement, createSortTemplate(), `beforeend`);
-render(siteTripEventsElement, createContentTemplate(), `beforeend`);
-const siteTripDaysElement = siteTripEventsElement.querySelector(`.trip-days`);
-render(siteTripDaysElement, createDayListTemplate(), `beforeend`);
-const siteTripDaysCardsListElement = siteTripDaysElement.querySelector(`.trip-days__item`);
 for (let i = 0; i < 3; i++) {
-  render(siteTripDaysCardsListElement, createCardTemplate(), `beforeend`);
+  render(siteTripEventsElement, createCardTemplate(), `beforeend`);
 }
