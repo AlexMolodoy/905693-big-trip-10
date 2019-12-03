@@ -44,20 +44,17 @@ const createFilterTemplate = () => {
 const createSortTemplate = () => {
   return (
     `<form class="trip-events__trip-sort  trip-sort" action="#" method="get">
-    <span class="trip-sort__item  trip-sort__item--day">Day</span>
+    <span class="trip-sort__item  trip-sort__item--day"></span>
 
     <div class="trip-sort__item  trip-sort__item--event">
-      <input id="sort-event" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-event" checked>
+      <input id="sort-event" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-event">
       <label class="trip-sort__btn" for="sort-event">Event</label>
     </div>
 
     <div class="trip-sort__item  trip-sort__item--time">
-      <input id="sort-time" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-time">
-      <label class="trip-sort__btn" for="sort-time">
+      <input id="sort-time" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-time" checked>
+      <label class="trip-sort__btn  trip-sort__btn--active  trip-sort__btn--by-increase" for="sort-time">
         Time
-        <svg class="trip-sort__direction-icon" width="8" height="10" viewBox="0 0 8 10">
-          <path d="M2.888 4.852V9.694H5.588V4.852L7.91 5.068L4.238 0.00999987L0.548 5.068L2.888 4.852Z"/>
-        </svg>
       </label>
     </div>
 
@@ -65,16 +62,17 @@ const createSortTemplate = () => {
       <input id="sort-price" class="trip-sort__input  visually-hidden" type="radio" name="trip-sort" value="sort-price">
       <label class="trip-sort__btn" for="sort-price">
         Price
-        <svg class="trip-sort__direction-icon" width="8" height="10" viewBox="0 0 8 10">
-          <path d="M2.888 4.852V9.694H5.588V4.852L7.91 5.068L4.238 0.00999987L0.548 5.068L2.888 4.852Z"/>
-        </svg>
       </label>
     </div>
 
     <span class="trip-sort__item  trip-sort__item--offers">Offers</span>
-  </form>
+    </form>`
+  );
+};
 
-  <form class="trip-events__item  event  event--edit" action="#" method="post">
+const createSortEventTemplate = () => {
+  return (
+    `<form class="trip-events__item  event  event--edit" action="#" method="post">
     <header class="event__header">
       <div class="event__type-wrapper">
         <label class="event__type  event__type-btn" for="event-type-toggle-1">
@@ -312,6 +310,7 @@ render(siteTripInfoElement, createRouteTemplate(), `beforeend`);
 render(siteTripControlsElement, createMenuTemplate(), `beforeend`);
 render(siteTripControlsElement, createFilterTemplate(), `beforeend`);
 render(siteTripEventsElement, createSortTemplate(), `beforeend`);
+render(siteTripEventsElement, createSortEventTemplate(), `beforeend`);
 render(siteTripEventsElement, createContentTemplate(), `beforeend`);
 const siteTripDaysElement = siteTripEventsElement.querySelector(`.trip-days`);
 for (let i = 0; i < 3; i++) {
