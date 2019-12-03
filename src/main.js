@@ -119,7 +119,7 @@ const createContentTemplate = () => {
 };
 
 const render = (container, template, place) => {
-  container.insertAjacentHTML(place, template);
+  container.insertAdjacentHTML(place, template);
 };
 
 const siteTripInfoElement = document.querySelector(`.trip-info`);
@@ -130,4 +130,6 @@ render(siteTripInfoElement, createRouteTemplate(), `beforeend`);
 render(siteTripControlsElement, createMenuTemplate(), `beforeend`);
 render(siteTripControlsElement, createFilterTemplate(), `beforeend`);
 render(siteTripEventsElement, createSortTemplate(), `beforeend`);
-render(siteTripEventsElement, createContentTemplate(), `beforeend`);
+for (let i = 0; i < 3; i++) {
+  render(siteTripEventsElement, createContentTemplate(), `beforeend`);
+};
