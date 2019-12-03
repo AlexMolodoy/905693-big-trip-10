@@ -126,8 +126,8 @@ const siteTripInfoElement = document.querySelector(`.trip-info`);
 const siteTripControlsElement = document.querySelector(`.trip-controls`);
 const siteTripEventsElement = document.querySelector(`.trip-events`);
 
-render(siteTripInfoElement, createRouteTemplate(), 'beforeend');
-render(siteTripControlsElement, createMenuTemplate(), 'beforeend');
-render(siteTripControlsElement, createFilterTemplate(), 'beforeend');
-render(siteTripEventsElement, createSortTemplate(), 'beforeend');
-render(siteTripEventsElement, createContentTemplate(), 'beforeend');
+render(siteTripInfoElement, createRouteTemplate(), `beforeend`);
+render(siteTripControlsElement, createMenuTemplate(), `beforeend`);
+render(siteTripControlsElement, createFilterTemplate(), `beforeend`);
+render(siteTripEventsElement, createSortTemplate(), `beforeend`);
+render(siteTripEventsElement, createContentTemplate(), `beforeend`);
