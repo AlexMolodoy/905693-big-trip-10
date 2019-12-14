@@ -1,10 +1,10 @@
-import {createCardTemplate} from './components/cardTemplate.js';
-import {createContentTemplate} from './components/contentTemplate.js';
-import {createFilterTemplate} from './components/filterTemplate.js';
-import {createMenuTemplate} from './components/menuTemplate.js';
-import {createRouteTemplate} from './components/routeTemplate.js';
-import {createSortEventTemplate} from './components/sortEventTemplate.js';
-import {createSortTemplate} from './components/sortTemplate.js';
+import {createCardTemplate} from './components/card.js';
+import {createContentTemplate} from './components/content.js';
+import {createFilterTemplate} from './components/filter.js';
+import {createMenuTemplate} from './components/menu.js';
+import {createRouteTemplate} from './components/route.js';
+import {createSortEventTemplate} from './components/sort-event.js';
+import {createSortTemplate} from './components/sort.js';
 
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
