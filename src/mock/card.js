@@ -57,7 +57,7 @@ function getRandomNextDate(date, start = 1000, stop = 8035200000) {
 export const cardGenerate = () => {
   const startDate = getRandomDate();
   const endDate = getRandomNextDate(startDate);
-  const duration = new Date(Date.parse(endDate) - Date.parse(endDate));
+  const duration = new Date(Date.parse(endDate) - Date.parse(startDate));
 
   return {
     type: getRandomElement(typeEvent),
