@@ -1,5 +1,5 @@
 export const filtersTemplate = [
-  {title: `Everything`, isChecked: 1, value: `everything`},
-  {title: `Future`, isChecked: 0, value: `future`},
-  {title: `Past`, isChecked: 0, value: `past`},
+  {title: `Everything`, isChecked: true, value: `everything`},
+  {title: `Future`, isChecked: false, value: `future`},
+  {title: `Past`, isChecked: false, value: `past`},
 ];

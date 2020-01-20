@@ -6,7 +6,7 @@ const tripCity = [
   `Moscow`, `New-York`, `Paris`, `Chicago`, `Los-Angels`,
 ];
 
-const title = [`Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
+const titles = [`Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
   `Cras aliquet varius magna, non porta ligula feugiat eget.`,
   `Fusce tristique felis at fermentum pharetra.`,
   `Aliquam id orci ut lectus varius viverra.`,
@@ -25,21 +25,29 @@ const OFFERS = [
   {name: `Choose seats`, type: `seats`, cost: 9},
 ];
 
-function getRandomElement(array, min = 1, max = 1, count = 1) {
-  const rndElement = [];
-  for (const i = 0; i < count; i++) {
-    const element = array[getRandomNumber(min, max)];
-    rndElement.push({element});
+function getRandomElement(array) {
+  return array[getRandomNumber(0, array.length)];
+}
+
+function getRandomElemntUnique(array, count) {
+  const array1 = array.slice();
+  const result = [];
+
+  for (let i = 0; i < count; i++) {
+    const index = getRandomNumber(0, array1.length);
+    result.push(array1[index]);
+    result.splice(index, 1);
   }
-  return rndElement;
+  return result;
+
 }
 
 function getRandomNumber(min, max) {
-  return Math.random() * (max - min) + min;
+  return Math.floor(Math.random() * (max - min) + min);
 }
 
 export function getRandomDate() {
-  return new Date();
+  return new Date(getRandomNumber(1545264000000, 1639872000000));
 }
 
 function getRandomNextDate(date, start = 1000, stop = 8035200000) {
@@ -48,15 +56,18 @@ function getRandomNextDate(date, start = 1000, stop = 8035200000) {
 
 export const cardGenerate = () => {
   const startDate = getRandomDate();
+  const endDate = getRandomNextDate(startDate);
+  const duration = new Date(Date.parse(endDate) - Date.parse(endDate));
 
   return {
-    startDate,
-    icon: getRandomElement(typeEvent),
+    type: getRandomElement(typeEvent),
     city: getRandomElement(tripCity),
     photo: `http://picsum.photos/300/150?r=${Math.random()}`,
-    description: getRandomElement(title, 1, title.length, getRandomNumber(1, 3)),
+    description: getRandomElemntUnique(titles, getRandomNumber(1, 3)),
     price: getRandomNumber(20, 100),
-    endDate: getRandomNextDate(startDate),
+    startEvent: startDate,
+    endEvent: endDate,
+    eventDuration: duration,
     addOptions: OFFERS.slice(-2),
   };
 };

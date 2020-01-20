@@ -1,4 +1,4 @@
 export const menuTemplate = [
-  {title: `Table`, isChecked: 1},
-  {title: `Stats`, isChecked: 0},
+  {title: `Table`, isChecked: true},
+  {title: `Stats`, isChecked: false},
 ];

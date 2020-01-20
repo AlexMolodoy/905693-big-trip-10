@@ -1,10 +1,9 @@
 import {menuTemplate} from '../mock/menu.js';
+
 const generateMenuTemplate = (menu) => {
-  menu.forEach((element) => {
-    return (
-      `<a class="trip-tabs__btn ${element.isChecked ? `trip-tabs__btn--active` : ``}" href="#">${element.title}</a>\n`
-    );
-  });
+  return menu.map((element) => (
+    `<a class="trip-tabs__btn ${element.isChecked ? `trip-tabs__btn--active` : ``}" href="#">${element.title}</a>\n`
+  )).join(``);
 };
 
 export const createMenuTemplate = () => {

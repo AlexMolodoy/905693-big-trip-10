@@ -1,14 +1,12 @@
 import {filtersTemplate} from '../mock/filters';
 
 const generateFiltersTemplate = (menu) => {
-  menu.forEach((element) => {
-    return (
-      `<div class="trip-filters__filter">
-        <input id="filter-${element.value}" class="trip-filters__filter-input  visually-hidden" type="radio" name="trip-filter" value="${element.value}" ${element.isChecked ? `checked` : ``}>
-        <label class="trip-filters__filter-label" for="filter-everything">${element.title}</label>
-      </div>\n`
-    );
-  });
+  return menu.map((element) => (
+    `<div class="trip-filters__filter">
+      <input id="filter-${element.value}" class="trip-filters__filter-input  visually-hidden" type="radio" name="trip-filter" value="${element.value}" ${element.isChecked ? `checked` : ``}>
+      <label class="trip-filters__filter-label" for="filter-everything">${element.title}</label>
+    </div>\n`
+  )).join(``);
 };
 
 export const createFilterTemplate = () => {
