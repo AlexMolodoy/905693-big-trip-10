@@ -25,6 +25,36 @@ const OFFERS = [
   {name: `Choose seats`, type: `seats`, cost: 9},
 ];
 
+// class GetRandom {
+//   element(array) {
+//     return array[GetRandom.number(0, array.length)];
+//   }
+
+//   elemntUnique(array, count) {
+//     const unique = array.slice();
+//     const result = [];
+
+//     for (let i = 0; i < count; i++) {
+//       const index = GetRandom.number(0, unique.length);
+//       result.push(unique[index]);
+//       result.splice(index, 1);
+//     }
+//     return result;
+//   }
+
+//   number(min, max) {
+//     return Math.floor(Math.random() * (max - min) + min);
+//   }
+
+//   date() {
+//     return new Date(GetRandom.number(1545264000000, 1639872000000));
+//   }
+
+//   nextDate(date, start = 1000, stop = 8035200000) {
+//     return new Date(Date.parse(date) + GetRandom.number(start, stop));
+//   }
+// }
+
 function getRandomElement(array) {
   return array[getRandomNumber(0, array.length)];
 }
@@ -57,7 +87,6 @@ function getRandomNextDate(date, start = 1000, stop = 8035200000) {
 export const cardGenerate = () => {
   const startDate = getRandomDate();
   const endDate = getRandomNextDate(startDate);
-  const duration = new Date(Date.parse(endDate) - Date.parse(startDate));
 
   return {
     type: getRandomElement(typeEvent),
@@ -67,7 +96,6 @@ export const cardGenerate = () => {
     price: getRandomNumber(20, 100),
     startEvent: startDate,
     endEvent: endDate,
-    eventDuration: duration,
     addOptions: OFFERS.slice(-2),
   };
 };

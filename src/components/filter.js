@@ -1,4 +1,6 @@
 import {filtersTemplate} from '../mock/filters';
+import {createElement} from '../utils.js';
+
 
 const generateFiltersTemplate = (menu) => {
   return menu.map((element) => (
@@ -19,3 +21,27 @@ export const createFilterTemplate = () => {
     </form>`
   );
 };
+
+export class Filter {
+  constructor(filter) {
+    this._filter = filter;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createFilterTemplate();
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element.remove();
+    this._element = null;
+  }
+}
