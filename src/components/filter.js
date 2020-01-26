@@ -29,7 +29,7 @@ export class Filter {
   }
 
   getTemplate() {
-    return createFilterTemplate(this._filter);
+    return createFilterTemplate();
   }
 
   getElement() {

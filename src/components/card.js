@@ -12,7 +12,7 @@ const createCardArray = () => {
 export const cards = createCardArray();
 
 export const createCardTemplate = (card) => {
-  const duration = new Date(Date.parse(card.endDate) - Date.parse(card.startDate));
+  const duration = new Date(Date.parse(card.endEvent) - Date.parse(card.startEvent));
   return (
     `<li class="trip-events__item">
     <div class="event">

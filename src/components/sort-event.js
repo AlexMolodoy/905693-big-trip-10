@@ -186,7 +186,7 @@ export class SortEvent {
     this._element = null;
   }
   getTemplate() {
-    return createSortEventTemplate(this._sortEvent);
+    return createSortEventTemplate();
   }
   getElement() {
     if (!this._element) {

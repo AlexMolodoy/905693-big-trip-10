@@ -21,7 +21,7 @@ export class Menu {
     this._element = null;
   }
   getTemplate() {
-    return createMenuTemplate(this._menu);
+    return createMenuTemplate();
   }
   getElement() {
     if (!this._element) {

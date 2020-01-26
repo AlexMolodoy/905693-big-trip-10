@@ -14,7 +14,7 @@ export class Content {
     this._element = null;
   }
   getTemplate() {
-    return createContentTemplate(this._content);
+    return createContentTemplate();
   }
   getElement() {
     if (!this._element) {

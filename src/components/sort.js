@@ -35,7 +35,7 @@ export class Sort {
     this._element = null;
   }
   getTemplate() {
-    return createSortTemplate(this._sort);
+    return createSortTemplate();
   }
   getElement() {
     if (!this._element) {

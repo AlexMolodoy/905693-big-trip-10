@@ -26,7 +26,7 @@ export class Route {
     this._element = null;
   }
   getTemplate() {
-    return createRouteTemplate(this._card);
+    return createRouteTemplate();
   }
   getElement() {
     if (!this._element) {

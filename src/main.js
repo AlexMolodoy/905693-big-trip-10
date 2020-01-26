@@ -33,9 +33,9 @@ for (let i = 0; i < cards.length; i++) {
       siteTripDaysElement.replaceChild(card.getElement(), cardEdit.getElement());
     });
 
-    card.getElement().querySelector(`.event__save-btn`).addEventListener(`submit`, () => {
+    card.getElement().querySelector(`.event__rollup-btn`).addEventListener(`click`, () => {
       siteTripDaysElement.replaceChild(cardEdit.getElement(), card.getElement());
-      cardEdit.getElement().querySelector(`.event__save-btn`).addEventListener(`submit`, () => {
+      cardEdit.getElement().querySelector(`.event__save-btn`).addEventListener(`click`, () => {
         siteTripDaysElement.replaceChild(card.getElement(), cardEdit.getElement());
       });
     });
