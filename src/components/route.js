@@ -1,5 +1,6 @@
 import {MONTHS_MAP} from '../const.js';
 import {cards} from './card.js';
+import {createElement} from '../utils.js';
 
 const citiesOnRoute = (array) => {
   const routeCities = [];
@@ -18,3 +19,25 @@ export const createRouteTemplate = () => {
     </div>`
   );
 };
+
+export class Route {
+  constructor(route) {
+    this._route = route;
+    this._element = null;
+  }
+  getTemplate() {
+    return createRouteTemplate(this._card);
+  }
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element.remove();
+    this._element = null;
+  }
+}

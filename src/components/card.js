@@ -1,4 +1,5 @@
 import {cardGenerate} from '../mock/card.js';
+import {createElement} from '../utils.js';
 
 const createCardArray = () => {
   const cardArray = [];
@@ -11,6 +12,7 @@ const createCardArray = () => {
 export const cards = createCardArray();
 
 export const createCardTemplate = (card) => {
+  const duration = new Date(Date.parse(card.endDate) - Date.parse(card.startDate));
   return (
     `<li class="trip-events__item">
     <div class="event">
@@ -25,7 +27,7 @@ export const createCardTemplate = (card) => {
           &mdash;
           <time class="event__end-time" datetime="${card.endEvent.getYear()}-${card.endEvent.getMonth()}-${card.endEvent.getDate()}T${card.endEvent.getHours()}:${card.endEvent.getMinutes()}">${card.endEvent.getHours()}:${card.endEvent.getMinutes()}</time>
         </p>
-        <p class="event__duration">${card.eventDuration.getHours()}H${card.eventDuration.getMinutes()}</p>
+        <p class="event__duration">${duration.getHours()}H${duration.getMinutes()}</p>
       </div>
 
       <p class="event__price">
@@ -48,3 +50,26 @@ export const createCardTemplate = (card) => {
   </li>`
   );
 };
+
+export class Card {
+  constructor(card) {
+    this._card = card;
+    this._element = null;
+  }
+  getTemplate() {
+    return createCardTemplate(this._card);
+  }
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element.remove();
+    this._element = null;
+  }
+}
+
