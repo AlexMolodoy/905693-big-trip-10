@@ -52,11 +52,16 @@ export const createCardTemplate = (card) => {
 };
 
 export class Card extends AbstractComponent {
-  super(card) {
+  constructor(card) {
+    super();
     this._card = card;
   }
   getTemplate() {
     return createCardTemplate(this._card);
+  }
+
+  setEditHandler(handler) {
+    this.getElement().querySelector(`.event__rollup-btn`).addEventListener(`click`, handler);
   }
 }
 
