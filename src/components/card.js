@@ -1,5 +1,5 @@
 import {cardGenerate} from '../mock/card.js';
-import {createElement} from '../utils.js';
+import {AbstractComponent} from '../utils.js';
 
 const createCardArray = () => {
   const cardArray = [];
@@ -51,25 +51,12 @@ export const createCardTemplate = (card) => {
   );
 };
 
-export class Card {
-  constructor(card) {
+export class Card extends AbstractComponent {
+  super(card) {
     this._card = card;
-    this._element = null;
   }
   getTemplate() {
     return createCardTemplate(this._card);
-  }
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element.remove();
-    this._element = null;
   }
 }
 
