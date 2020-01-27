@@ -1,4 +1,4 @@
-import {createElement} from '../utils.js';
+import {AbstractComponent} from '../utils.js';
 
 export const createSortEventTemplate = () => {
   return (
@@ -180,24 +180,14 @@ export const createSortEventTemplate = () => {
   );
 };
 
-export class SortEvent {
-  constructor(sortEvent) {
-    this._sortEvent = sortEvent;
-    this._element = null;
-  }
+export class SortEvent extends AbstractComponent {
   getTemplate() {
     return createSortEventTemplate();
   }
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
+  setSubmitHandler(handler) {
+    this.getElement().querySelector(`.event__save-btn`).addEventListener(`click`, handler);
   }
-
-  removeElement() {
-    this._element.remove();
-    this._element = null;
+  setCloseHandler(handler) {
+    this.getElement().querySelector(`.event__reset-btn`).addEventListener(`click`, handler);
   }
 }
