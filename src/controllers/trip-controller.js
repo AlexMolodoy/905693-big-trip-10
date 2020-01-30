@@ -1,34 +1,35 @@
-import {Card} from '../components/card.js';
-import {SortEvent} from '../components/sort-event.js';
-import {replace, render} from '../utils.js';
-
-function renderCard(_card) {
-  const card = new Card(_card);
-  const cardEdit = new SortEvent(_card);
-
-  card.setEditHandler(() => {
-    replace(cardEdit, card);
-    cardEdit.setCloseHandler(() => {
-      replace(card, cardEdit);
-    });
-    cardEdit.setSubmitHandler((evt) => {
-      evt.preventDefault();
-      replace(card, cardEdit);
-    });
-  });
-  return card.getElement();
-}
+import {render} from '../utils.js';
+import {PointController} from './point-controller.js';
 
 export class TripController {
   constructor(container) {
     this._container = container;
+    this._events = [];
 
+    this._onDataChange = this._onDataChange.bind(this);
+  }
+  _onDataChange(oldEvent, update, callback) {
+    const index = this._events.findIndex((event) => oldEvent === event);
+    this._events[index] = Object.assign(oldEvent, update);
+    callback(this._events[index]);
+    // this.render(this._events);
     // this.elementNoFound = ''
     // this.elementLoading = ''
   }
   render(events) {
+    this.events = events;
     events.forEach((event) =>{
-      render(this._container, renderCard(event));
+      const tripElement = new PointController(this._onViewChange, this._container, this._onDataChange);
+
+      render(this._container, tripElement.renderCard(event));
     });
+  }
+  _onViewChange(events) {
+    this.events = events;
+    events.forEach((event) =>{
+      const tripElement = new PointController(event);
+      tripElement.setDefaultView();
+    });
+
   }
 }

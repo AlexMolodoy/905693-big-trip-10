@@ -97,5 +97,6 @@ export const cardGenerate = () => {
     startEvent: startDate,
     endEvent: endDate,
     addOptions: OFFERS.slice(-2),
+    isFavorite: Boolean(getRandomNumber(0, 1)),
   };
 };

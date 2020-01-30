@@ -54,6 +54,7 @@ export const createCardTemplate = (card) => {
 export class Card extends AbstractComponent {
   constructor(card) {
     super();
+
     this._card = card;
   }
   getTemplate() {
