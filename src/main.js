@@ -2,7 +2,6 @@ import {Content} from './components/content.js';
 import {Filter} from './components/filter.js';
 import {Menu} from './components/menu.js';
 import {Route} from './components/route.js';
-import {SortEvent} from './components/sort-event.js';
 import {Sort} from './components/sort.js';
 import {cards} from './components/card.js';
 import {render} from './utils.js';
@@ -20,7 +19,6 @@ render(siteTripInfoElement, new Route().getElement());
 render(siteTripControlsElement, new Menu().getElement());
 render(siteTripControlsElement, new Filter().getElement());
 render(siteTripEventsElement, new Sort().getElement());
-render(siteTripEventsElement, new SortEvent().getElement());
 render(siteTripEventsElement, new Content().getElement());
 
 const tripController = new TripController(siteTripEventsElement.querySelector(`.trip-days`));

@@ -16,3 +16,8 @@ const MONTHS_MAP = [
 export {
   MONTHS_MAP
 };
+
+export const Mode = {
+  DEFAULT: `default`,
+  EDIT: `edit`,
+};
