@@ -18,7 +18,7 @@ const titles = [`Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
   `Nunc fermentum tortor ac porta dapibus. In rutrum ac purus sit amet tempus.`,
 ];
 
-const OFFERS = [
+export const OFFERS = [
   {name: `Add luggage`, type: `luggage`, cost: 10},
   {name: `Switch to comfort class`, type: `comfort`, cost: 150},
   {name: `Add meal`, type: `meal`, cost: 2},

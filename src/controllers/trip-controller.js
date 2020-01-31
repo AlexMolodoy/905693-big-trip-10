@@ -5,8 +5,9 @@ export class TripController {
   constructor(container) {
     this._container = container;
     this._events = [];
-
+    this._activeEvents = [];
     this._onDataChange = this._onDataChange.bind(this);
+    this._onViewChange = this._onViewChange.bind(this);
   }
   _onDataChange(oldEvent, update, callback) {
     const index = this._events.findIndex((event) => oldEvent === event);
@@ -17,19 +18,18 @@ export class TripController {
     // this.elementLoading = ''
   }
   render(events) {
+    this._activeEvents = [];
     this.events = events;
     events.forEach((event) =>{
-      const tripElement = new PointController(this._onViewChange, this._container, this._onDataChange);
-
+      const tripElement = new PointController(this._container, this._onDataChange, this._onViewChange);
+      this._activeEvents.push(tripElement);
       render(this._container, tripElement.renderCard(event));
     });
   }
-  _onViewChange(events) {
-    this.events = events;
-    events.forEach((event) =>{
-      const tripElement = new PointController(event);
-      tripElement.setDefaultView();
-    });
 
+  _onViewChange() {
+    this._activeEvents.forEach((event) =>{
+      event.setDefaultView();
+    });
   }
 }
